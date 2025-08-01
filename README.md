@@ -15,6 +15,43 @@ This infrastructure implements a classic 3-tier architecture:
 - **Application Tier**: App servers in private subnets  
 - **Data Tier**: RDS MariaDB in private subnets
 
+## Visual Infrastructure Showcase
+
+### Live Web Application
+![Web Application](images/web-output.png)
+
+### AWS Console Views
+<table>
+<tr>
+<td width="50%">
+
+**VPC Network Architecture**
+![VPC Console](images/aws-console-vpc.png)
+
+</td>
+<td width="50%">
+
+**Running EC2 Instances**
+![EC2 Console](images/aws-console-ec2.png)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+**RDS Database Instance**
+![RDS Console](images/aws-console-rds.png)
+
+</td>
+<td width="50%">
+
+**Security Groups Configuration**
+![Security Groups](images/aws-console-security-groups.png)
+
+</td>
+</tr>
+</table>
+
 ### Key Features
 
 - **High Availability**: Multi-AZ deployment across 2 availability zones  
@@ -118,6 +155,32 @@ The following screenshots show the deployed infrastructure in the AWS console:
 The VPC dashboard shows:
 - **4 Subnets**: 1 public subnet (us-east-1a) + 3 private subnets (us-east-1a, us-east-1b)
 - **3 Route Tables**: Public route table, private route table, and default
+- **2 Network Connections**: Internet Gateway (main-igw) and NAT Gateway (main-nat-gateway)
+- **Multi-AZ Deployment**: Resources distributed across us-east-1a and us-east-1b
+
+### EC2 Instances Dashboard
+![AWS EC2 Console](images/aws-console-ec2.png)
+
+The EC2 dashboard displays all running instances:
+- **Bastion Host**: t2.micro in public subnet for secure access
+- **Web Server**: t2.micro in public subnet serving the application
+- **App Server**: t2.micro in private subnet for application logic
+
+### RDS Database Dashboard
+![AWS RDS Console](images/aws-console-rds.png)
+
+The RDS dashboard shows:
+- **MariaDB Instance**: Running in private subnets for security
+- **Multi-AZ Configuration**: High availability setup
+- **Free Tier**: Cost-optimized deployment
+
+### Security Groups Configuration
+![AWS Security Groups Console](images/aws-console-security-groups.png)
+
+Security groups demonstrate:
+- **Least Privilege Access**: Each tier only allows necessary traffic
+- **Proper Segmentation**: Web, App, and Database tiers properly isolated
+- **Bastion Access**: Secure SSH access to private resources
 - **2 Network Connections**: Internet Gateway (main-igw) and NAT Gateway (main-nat-gateway)
 - **Multi-AZ Deployment**: Resources distributed across us-east-1a and us-east-1b
 - **Proper Network Segmentation**: Clear separation between public and private resources
